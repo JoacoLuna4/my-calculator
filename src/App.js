@@ -1,64 +1,66 @@
 import "./index.css";
 import React, { useState } from "react";
 function App() {
-	const [Display, setDisplay] = useState("");
-	const [Result, setResult] = useState("");
+	const [display, setDisplay] = useState("");
+	const [result, setResult] = useState("");
+
 	const handleOperator = (e) => {
 		const operator = e.target.getAttribute("name");
 		let numberA;
 		let numberB;
-		let result;
+
+		if (operator) {
+			numberA = display;
+			setDisplay("");
+			console.log("este es A", numberA);
+			if (operator == "equal") {
+				numberB = display;
+				console.log("este es B", numberB);
+				console.log("este es A despues de", numberA);
+			}
+		} //esta logica no esta bien
 
 		if (operator === "AC") {
 			setDisplay("");
 		} else if (operator === "delete") {
-			setDisplay(Display.substring(0, Display.length - 1));
-		} else if (operator == "plus") {
-			numberA = Display;
-			setDisplay(0);
-			console.log("el Display = " + Display, "el numberA= " + numberA);
-			numberB = Display;
-			console.log("el Display = " + Display, "el numberB= " + numberA);
-
-			result = numberA + numberB;
-			console.log("SUPUESTO RESULT" + result); //TODA ESTA LOGICA DE LA SUMA ESTA MAL
+			setDisplay(display.substring(0, display.length - 1));
 		}
 	};
 	// const handleAC = (e) => {
 	// 	setDisplay("");
 	// };
 	// const handleDel = (e) => {
-	// 	setDisplay(Display.substring(0, Display.length - 1));
+	// 	setDisplay(display.substring(0, display.length - 1));
 	// };
 	const handleNumber = (e) => {
-		setDisplay(Display + e.target.value);
-		console.log(e.target);
+		setDisplay(display + e.target.value);
 	};
 	return (
 		<div className="container">
-			<div name="Display">
-				<h2> This is a Result: {Display} </h2>
+			<div name="display">
+				<h2> This is a result: {result} </h2>
+				<h2> This is a operation: {display} </h2>
 			</div>
 			<table>
 				<tbody>
 					<tr name="FUNCIONES">
 						<td>
-							<button name="AC" onClick={handleOperator}>
+							<button name="AC" onClick={handleOperator} id="operator">
 								AC
 							</button>
 						</td>
 						<td>
-							<button name="delete" onClick={handleOperator}>
+							<button name="delete" onClick={handleOperator} id="operator">
 								DEL
 							</button>
 						</td>
 						<td>
-							<button name="percentage" onClick={handleOperator}>
+							<button name="percentage" onClick={handleOperator} id="operator">
 								%
 							</button>
 						</td>
 						<td>
-							<button name="division" onClick={handleOperator}>
+							<button name="division" onClick={handleOperator} id="operator">
 								/
 							</button>
 						</td>
@@ -80,7 +82,11 @@ function App() {
 							</button>
 						</td>
 						<td>
-							<button name="multiplication" onClick={handleOperator}>
+							<button
+								name="multiplication"
+								onClick={handleOperator}
+								id="operator"
+							>
 								X
 							</button>
 						</td>
@@ -102,7 +108,7 @@ function App() {
 							</button>
 						</td>
 						<td>
-							<button name="minus" onClick={handleOperator}>
+							<button name="minus" onClick={handleOperator} id="operator">
 								-
 							</button>
 						</td>
@@ -124,14 +130,14 @@ function App() {
 							</button>
 						</td>
 						<td>
-							<button name="plus" onClick={handleOperator}>
+							<button name="plus" onClick={handleOperator} id="operator">
 								+
 							</button>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<button value="zero" onClick={handleNumber}>
+							<button value="0" onClick={handleNumber}>
 								0
 							</button>
 						</td>
@@ -141,7 +147,9 @@ function App() {
 							</button>
 						</td>
 						<td>
-							<button name="equal" onClick={handleOperator}></button>
+							<button name="equal" onClick={handleOperator} id="operator">
+								=
+							</button>
 						</td>
 					</tr>
 				</tbody>

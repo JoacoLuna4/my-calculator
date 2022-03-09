@@ -15,3 +15,52 @@ html {
 	background: #303030;
 	color: whitesmoke;
 }
+.container {
+	width: 33rem;
+	height: 45rem;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #243441;
+}
+
+table {
+	width: 100%;
+	text-align: center;
+}
+td {
+	padding: 10px;
+}
+td > button {
+	width: 5rem;
+	height: 5rem;
+	text-align: center;
+	color: #78797a;
+	background-color: #243441;
+	font-size: large;
+	font-weight: bold;
+	border: none;
+	border-radius: 1rem;
+	box-shadow: 01px 3px 7px 2px #303030, 0px -2px 3px rgb(185, 182, 182);
+}
+td > button:active {
+	width: 5rem;
+	height: 5rem;
+	text-align: center;
+	color: #243441;
+	background-color: #78797a;
+	font-size: large;
+	font-weight: bold;
+	border: none;
+	border-radius: 1rem;
+	/* box-shadow: 01px 3px 7px 2px #303030, 0px -2px 3px rgb(185, 182, 182); */
+}
+/* Elijo este selector para no tener conflictos de especificidad con el equal button */
+button[id="operator"] {
+	background-color: #ed802e;
+}
+button[id="operator"]:active {
+	background-color: #243441;
+}
+button[name="equal"] {
+	background-color: rgb(255, 255, 255);
+}
