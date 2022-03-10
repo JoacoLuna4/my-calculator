@@ -15,34 +15,45 @@ html {
 	background: #303030;
 	color: whitesmoke;
 }
-.container {
+.container-calc {
 	width: 33rem;
 	height: 45rem;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #243441;
 }
-
-table {
+.container-display {
 	width: 100%;
-	text-align: center;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: flex-end;
+	grid-column: 1/-1;
+	margin-bottom: 0.5rem;
 }
-td {
-	padding: 10px;
+.display {
+	font-family: "Times New Roman", Times, serif;
 }
-td > button {
+.container-keys {
+	display: grid;
+	justify-items: center;
+	gap: 1rem;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.container-keys > button {
 	width: 5rem;
 	height: 5rem;
 	text-align: center;
 	color: #78797a;
 	background-color: #243441;
+	padding: 10px;
 	font-size: large;
 	font-weight: bold;
 	border: none;
 	border-radius: 1rem;
 	box-shadow: 01px 3px 7px 2px #303030, 0px -2px 3px rgb(185, 182, 182);
 }
-td > button:active {
+.container-keys > button:active {
 	width: 5rem;
 	height: 5rem;
 	text-align: center;
@@ -52,7 +63,6 @@ td > button:active {
 	font-weight: bold;
 	border: none;
 	border-radius: 1rem;
-	/* box-shadow: 01px 3px 7px 2px #303030, 0px -2px 3px rgb(185, 182, 182); */
 }
 /* Elijo este selector para no tener conflictos de especificidad con el equal button */
 button[id="operator"] {
@@ -63,4 +73,5 @@ button[id="operator"]:active {
 }
 button[name="equal"] {
 	background-color: rgb(255, 255, 255);
+	grid-column: span 2;
 }
