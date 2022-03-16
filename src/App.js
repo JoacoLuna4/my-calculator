@@ -3,49 +3,52 @@ import React, { useState } from "react";
 function App() {
 	const [display, setDisplay] = useState("");
 	const [result, setResult] = useState("");
+	const [numberA, setNumberA] = useState("");
+	const [numberB, setNumberB] = useState("");
+	const [currentOperator, setcurrentOperator] = useState("");
 
 	const handleOperator = (e) => {
-		const operator = e.target.getAttribute("name");
-		let numberA;
-		let numberB;
-
-		if (operator) {
-			numberA = display;
-			setDisplay("");
-			console.log("este es A", numberA);
-			if (operator == "equal") {
-				numberB = display;
-				console.log("este es B", numberB);
-				console.log("este es A despues de", numberA);
-			}
-		} //esta logica no esta bien n
-
-		if (operator === "AC") {
-			setDisplay("");
-		} else if (operator === "delete") {
-			setDisplay(display.substring(0, display.length - 1));
-		}
+		setcurrentOperator(e);
+		console.log(currentOperator + " current operator ");
+		// if (currentOperator === "AC") {
+		// 	setDisplay("");
+		// } else if (currentOperator === "delete") {
+		// 	setDisplay(display.substring(0, display.length - 1));
+		// }
 	};
-	// const handleAC = (e) => {
-	// 	setDisplay("");
-	// };
-	// const handleDel = (e) => {
-	// 	setDisplay(display.substring(0, display.length - 1));
+
+	// const handleNumber = (e) => {
+	// 	setDisplay(display + e.target.value);
 	// };
 	const handleNumber = (e) => {
-		setDisplay(display + e.target.value);
+		if (currentOperator === "") {
+			setNumberA(numberA + e.target.value);
+			console.log("ESTE ES EL NUMBER A " + numberA);
+		} else {
+			setNumberB(numberB + e.target.value);
+			console.log("este es el number B " + numberB);
+		}
 	};
+
 	return (
 		<div className="container-calc">
 			<div name="display" className="container-display">
-				<h2 className="display"> This is a result: {result} </h2>
-				<h2 className="display"> This is a operation: {display} </h2>
+				<h2 className="display">
+					{" "}
+					This is a result: {!currentOperator
+						? numberA + currentOperator
+						: ""}{" "}
+				</h2>
+				<h2 className="display">
+					{" "}
+					This is a operation: {currentOperator ? numberA : numberB}{" "}
+				</h2>
 			</div>
 
 			<div name="container-keys" className="container-keys">
 				<button
 					name="AC"
-					onClick={handleOperator}
+					onClick={handleOperator("AC")}
 					id="operator"
 					className="operator"
 				>
@@ -54,7 +57,7 @@ function App() {
 
 				<button
 					name="delete"
-					onClick={handleOperator}
+					onClick={handleOperator("del")}
 					id="operator"
 					className="operator"
 				>
@@ -63,7 +66,7 @@ function App() {
 
 				<button
 					name="percentage"
-					onClick={handleOperator}
+					onClick={handleOperator("%")}
 					id="operator"
 					className="operator"
 				>
@@ -72,7 +75,7 @@ function App() {
 
 				<button
 					name="division"
-					onClick={handleOperator}
+					onClick={handleOperator("/")}
 					id="operator"
 					className="operator"
 				>
@@ -93,7 +96,7 @@ function App() {
 
 				<button
 					name="multiplication"
-					onClick={handleOperator}
+					onClick={handleOperator("*")}
 					id="operator"
 					className="operator"
 				>
@@ -114,7 +117,7 @@ function App() {
 
 				<button
 					name="minus"
-					onClick={handleOperator}
+					onClick={handleOperator("-")}
 					id="operator"
 					className="operator"
 				>
@@ -146,7 +149,7 @@ function App() {
 					0
 				</button>
 
-				<button name="dot" onClick={handleOperator} className="numbers">
+				<button name="dot" onClick={handleOperator(".")} className="numbers">
 					.
 				</button>
 
