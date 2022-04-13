@@ -56,17 +56,11 @@ const Calculator = () => {
 
 	return (
 		<div className="container ">
-			<footer>
-				<label>
-					<input type={"checkbox"} id="dark-mode" />
-					Dark Mode
-				</label>
-			</footer>
-			<div className="container-calc dark ">
+			<div className="container-calc  ">
 				{/* AQUI VA UN DARK MODE*/}
-				<div name="display" className="container-display dark">
+				<div name="display" className="container-display">
 					{/* AQUI VA UN DARK MODE*/}
-					<h2 className="result dark">
+					<h2 className="result">
 						{/* AQUI VA UN DARK MODE en result*/}
 
 						{result ? result : !currentOperator ? numberA : numberB}
@@ -75,7 +69,7 @@ const Calculator = () => {
 						{currentOperator ? numberA + currentOperator : ""}
 					</h2>
 				</div>
-				<div name="container-keys" className="container-keys dark ">
+				<div name="container-keys" className="container-keys">
 					{/* AQUI VA UN DARK MODE*/}
 					<button
 						name="AC"
